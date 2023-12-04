@@ -1,10 +1,16 @@
 <script setup>
+import ChildComponent from '../components/ChildComponent.vue';
+
 defineProps({
   msg: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
+
+const handleAlert = (message) => {
+  alert(message);
+};
 </script>
 
 <template>
@@ -12,9 +18,9 @@ defineProps({
     <h1 class="green">{{ msg }}</h1>
     <h3>
       You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> + <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
     </h3>
+    <ChildComponent @showAlert="handleAlert" messageToProps="Halo dari Props!" />
   </div>
 </template>
 
